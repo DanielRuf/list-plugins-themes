@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: List Plugins and Themes
+ * Plugin Name: List Plugins & Themes
  * Plugin URI: https://github.com/DanielRuf/list-plugins-themes
  * Description: Display a list of all plugins and themes for support cases.
  * Version: 1.0.0
@@ -24,7 +24,7 @@ if (!function_exists('is_admin')) {
 function wplpt_list_plugins_themes_init()
 {
     // set some heading
-    echo '<h1>List of all plugins and themes</h1>';
+    echo '<h1>List of all plugins & themes</h1>';
     // check the provided parameters
     if (
         isset($_GET['page']) &&
@@ -37,7 +37,7 @@ function wplpt_list_plugins_themes_init()
         $hostname = $_SERVER['HOSTNAME'];
         $date = date('c', time());
         $output .= "Hostname: {$hostname}\n";
-        $output .= "Date and Time: {$date}\n";
+        $output .= "Date & Time: {$date}\n";
         $output .= "========================================\n";
         $output .= "\n";
 
@@ -114,7 +114,7 @@ function wplpt_list_plugins_themes_init()
 function wplpt_list_plugins_themes_setup_menu()
 {
     // set page title, menu title, capability, menu slug and the function to call 
-    add_management_page('List Plugins and Themes', 'List Plugins and Themes', 'install_plugins', 'wplpt-list-plugins-themes', 'wplpt_list_plugins_themes_init');
+    add_management_page('List Plugins & Themes', 'List Plugins & Themes', 'install_plugins', 'wplpt-list-plugins-themes', 'wplpt_list_plugins_themes_init');
 }
 
 // finally call the function to add the new page
