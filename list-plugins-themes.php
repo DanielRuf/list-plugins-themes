@@ -4,7 +4,7 @@
  * Plugin Name: List Plugins & Themes
  * Plugin URI: https://github.com/DanielRuf/list-plugins-themes
  * Description: Display a list of all plugins and themes for support cases.
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPLv3 or later
  * Author: Daniel Ruf
  * Author URI: https://daniel-ruf.de
@@ -62,6 +62,32 @@ function wplpt_list_plugins_themes_init()
             $output .= "Version: {$plugin['Version']}\n";
             $output .= "Requires WP: {$plugin['RequiresWP']}\n";
             $output .= "Requires PHP: {$plugin['RequiresPHP']}\n";
+            $output .= "========================================\n";
+        }
+
+        $output .= "\n";
+
+        $all_mu_plugins = get_mu_plugins();
+        $output .= "Must-use Plugins:\n";
+        $output .= "\n";
+
+        foreach ($all_mu_plugins as $plugin_mu_file => $plugin_mu) {
+
+            $status = 'inactive';
+            if (is_plugin_active($plugin_mu_file)) {
+                $status = 'active';
+            }
+
+            $output .= "{$plugin_mu['Name']}\n";
+            $output .= "Title: {$plugin_mu['Title']}\n";
+            $output .= "File: {$plugin_mu_file}\n";
+            $output .= "Status: {$status}\n";
+            $output .= "Description: {$plugin_mu['Description']}\n";
+            $output .= "Author: {$plugin_mu['Author']}\n";
+            $output .= "AuthorURI: {$plugin_mu['AuthorURI']}\n";
+            $output .= "Version: {$plugin_mu['Version']}\n";
+            $output .= "Requires WP: {$plugin_mu['RequiresWP']}\n";
+            $output .= "Requires PHP: {$plugin_mu['RequiresPHP']}\n";
             $output .= "========================================\n";
         }
 
